@@ -11,6 +11,8 @@
           %th
             Collection
           %th
+            Tweets
+          %th
             Public?
           %th
             Access
@@ -20,6 +22,8 @@
           %tr
             %td
               = link_to collection.name, collection
+            %td
+              = collection.tweets.size
             %td
               = collection.public?.to_s
             %td
