@@ -1,0 +1,26 @@
+.row
+  .span6
+    %h1
+      = @user.name
+
+.row
+  .span8
+    %table.table
+      %thead
+        %tr
+          %th
+            Collection
+          %th
+            Public?
+          %th
+            Access
+      %tbody
+        - @user.collections.each do |collection|
+          - privs = Privilege.where(user: @user).where(collection: collection).last.level
+          %tr
+            %td
+              = collection.name
+            %td
+              = collection.public?.to_s
+            %td
+              = privs.capitalize
