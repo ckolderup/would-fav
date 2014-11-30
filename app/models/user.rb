@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+
+  friendly_id :name
+
   has_many :privileges
   has_many :collections, through: :privileges
+
+  validates_uniqueness_of :name
 
   before_create :generate_default_collection
 

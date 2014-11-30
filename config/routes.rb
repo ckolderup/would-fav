@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get '/profile', to: 'sessions#show', as: 'show'
   delete '/signout', to: 'sessions#destroy', as: 'signout'
 
-  get '/users/:name', to: 'users#show', as: 'show_user'
+  get '/user/:name', to: 'users#show', as: 'user'
+  get '/collection/:slug', to: 'collections#show', as: 'collection'
 end

@@ -19,7 +19,7 @@
           - privs = Privilege.where(user: @user).where(collection: collection).last.level
           %tr
             %td
-              = collection.name
+              = link_to collection.name, collection
             %td
               = collection.public?.to_s
             %td

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def show
-    @user = User.find_by_name(user_params)
+    @user = User.friendly.find(user_params)
 
     render
   end

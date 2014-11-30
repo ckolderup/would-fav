@@ -34,6 +34,8 @@ gem 'omniauth-twitter'
 gem 'twitter'
 gem 'twitter-text'
 
+gem 'friendly_id'
+
 gem 'foreman'
 gem 'rails_12factor', group: :production
 gem 'powder', group: :development

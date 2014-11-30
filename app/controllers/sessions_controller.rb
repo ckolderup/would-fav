@@ -6,7 +6,12 @@ class SessionsController < ApplicationController
              User.create_with_omniauth(auth)
       cookies.permanent.signed[:user_id] = user.uid
     end
-    redirect_to show_path, notice: 'Signed in'
+
+    if current_user.present?
+      redirect_to current_user, notice: 'Signed in'
+    else
+      error
+    end
   end
 
   def show

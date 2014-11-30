@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
     if current_user
-      redirect_to show_path
+      redirect_to current_user
     end
 
 
