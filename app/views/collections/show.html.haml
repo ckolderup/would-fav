@@ -2,8 +2,10 @@
   .span6
     %h1
       = @collection.name
-    %h3
+    %h2
       = @collection.description
+    %h3
+      = curated_by(@collection.contributors).html_safe
 
 .row
   .span6.offset3

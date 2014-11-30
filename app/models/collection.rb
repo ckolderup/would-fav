@@ -18,6 +18,10 @@ class Collection < ActiveRecord::Base
     new_record? || slug.blank?
   end
 
+  def contributors
+    privileges.map(&:user).uniq
+  end
+
   def visible_to? user
     if public?
       true
