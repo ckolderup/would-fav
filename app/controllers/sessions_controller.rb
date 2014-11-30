@@ -1,9 +1,11 @@
 class SessionsController < ApplicationController
   def create
-    auth = request.env['omniauth.auth']
-    user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
-           User.create_with_omniauth(auth)
-    cookies.permanent.signed[:user_id] = user.uid
+    unless current_user
+      auth = request.env['omniauth.auth']
+      user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) ||
+             User.create_with_omniauth(auth)
+      cookies.permanent.signed[:user_id] = user.uid
+    end
     redirect_to show_path, notice: 'Signed in'
   end
 
@@ -21,7 +23,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    reset_session
+    cookies.delete :user_id
     redirect_to root_path, notice: 'Signed out'
   end
 end
