@@ -17,4 +17,10 @@ class Collection < ActiveRecord::Base
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
   end
+
+  def visible_to? user
+    false if user.blank?
+
+    privileges.where(user: user).any?
+  end
 end

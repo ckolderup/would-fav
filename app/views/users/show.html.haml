@@ -15,7 +15,7 @@
           %th
             Access
       %tbody
-        - @user.collections.each do |collection|
+        - @visible_collections.each do |collection|
           - privs = Privilege.where(user: @user).where(collection: collection).last.level
           %tr
             %td
