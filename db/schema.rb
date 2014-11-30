@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130174609) do
+ActiveRecord::Schema.define(version: 20141130180922) do
 
   create_table "collections", force: true do |t|
     t.string   "name"
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 20141130174609) do
     t.integer  "user_id"
     t.integer  "collection_id"
   end
+
+  create_table "tweets", force: true do |t|
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "collection_id"
+  end
+
+  add_index "tweets", ["collection_id"], name: "index_tweets_on_collection_id"
 
   create_table "users", force: true do |t|
     t.string   "provider"

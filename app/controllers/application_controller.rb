@@ -10,6 +10,7 @@ private
     logger.info "user_id: #{user_id}"
     @current_user ||= User.find_by_uid(user_id) if user_id.present?
   end
+  helper_method :current_user
 
   def client
     @client ||= Twitter::REST::Client.new do |config|

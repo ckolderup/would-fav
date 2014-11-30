@@ -26,9 +26,9 @@
           = link_to('Would Fav', root_path, class: 'brand')
           .nav-collapse
             %ul.nav
-              - if @current_user
+              - if current_user
                 %li
-                  = link_to(t('nav.profile'), show_path)
+                  = link_to(t('nav.profile'), current_user)
                 %li
                   = link_to(t('button.sign_out'), signout_path, method: :delete)
               - else
