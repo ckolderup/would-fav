@@ -31,4 +31,14 @@ class Collection < ActiveRecord::Base
       privileges.where(user: user).any?
     end
   end
+
+  def can_add? user
+    privs = privileges.where(user: user)
+    privs.present? && [:add, :edit, :owner].include?(privs.last.level.to_sym)
+  end
+
+  def can_edit? user
+    privs = privileges.where(user: user)
+    privs.present? && [:edit, :owner].include?(privs.last.level.to_sym)
+  end
 end
