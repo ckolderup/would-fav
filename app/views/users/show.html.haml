@@ -13,6 +13,8 @@
           %th
             Tweets
           %th
+            Last Updated
+          %th
             Public?
           %th
             Access
@@ -24,6 +26,8 @@
               = link_to collection.name, collection
             %td
               = collection.tweets.size
+            %td
+              = "#{time_ago_in_words(collection.updated_at)} ago"
             %td
               = collection.public?.to_s
             %td

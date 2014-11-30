@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     @user = User.friendly.find(user_params)
 
-    collections = @user.collections.all
+    collections = @user.collections.all.order(updated_at: :desc)
     @visible_collections = collections.select {|c| c.visible_to?(current_user)}
     render
   end
