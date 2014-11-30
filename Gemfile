@@ -35,7 +35,8 @@ gem 'twitter'
 gem 'twitter-text'
 
 gem 'foreman'
-gem 'rails_12factor', group: :development
+gem 'rails_12factor', group: :production
+gem 'powder', group: :development
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
