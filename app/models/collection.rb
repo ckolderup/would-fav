@@ -19,8 +19,12 @@ class Collection < ActiveRecord::Base
   end
 
   def visible_to? user
-    false if user.blank?
-
-    privileges.where(user: user).any?
+    if public?
+      true
+    elsif user.blank?
+      false
+    else
+      privileges.where(user: user).any?
+    end
   end
 end
