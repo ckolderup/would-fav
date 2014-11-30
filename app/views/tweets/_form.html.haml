@@ -1,0 +1,5 @@
+= form_for(:tweet, url: {controller: 'tweets', action: 'create'}) do |f|
+  = hidden_field_tag :collection_slug, @collection.slug
+  = label_tag :url, "URL"
+  = text_field_tag :url, ""
+  = submit_tag "Submit"

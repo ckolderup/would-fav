@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
+  def not_allowed
+    raise ActionController::RoutingError.new('Not Allowed')
+  end
+
 private
 
   def current_user

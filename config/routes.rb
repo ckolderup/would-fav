@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get '/user/:name', to: 'users#show', as: 'user'
   get '/collection/:slug', to: 'collections#show', as: 'collection'
+
+  post '/tweets/create', to: 'tweets#create', as: 'tweet'
 end

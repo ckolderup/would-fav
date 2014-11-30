@@ -13,6 +13,9 @@
           %a{href: tweet.url}
             = tweet.url
 
+.row
+  .span4.offset4
+    = render 'tweets/form', locals: {collection: @collection}
 
 :javascript
   window.twttr = (function (d, s, id) {
