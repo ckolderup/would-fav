@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
-  before_create :generate_default_collection
+  after_create :generate_default_collection
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   private
 
   def generate_default_collection
-    collection = Collection.create("#{self.user.name}'s Favorites")
+    collection = Collection.create(name: "@#{self.name}'s Favorites")
     Privilege.create(user: self, collection: collection, level: :owner)
   end
 end
