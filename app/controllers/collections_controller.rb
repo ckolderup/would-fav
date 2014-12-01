@@ -1,6 +1,21 @@
 class CollectionsController < ApplicationController
+  def new
+    not_allowed unless current_user
+
+    @collection = Collection.new
+  end
+
+  def create
+    not_allowed unless current_user
+
+    @collection = Collection.create(collection_params)
+    Privilege.create(user: current_user, collection: @collection, level: :owner)
+
+    redirect_to @collection, {notice: 'Created!', status: :see_other}
+  end
+
   def show
-    @collection = Collection.friendly.find(collection_params)
+    @collection = Collection.friendly.find(params[:slug])
 
     not_found unless @collection.public? || @collection.visible_to?(current_user)
 
@@ -18,6 +33,6 @@ class CollectionsController < ApplicationController
   private
 
   def collection_params
-    params.require(:slug)
+    params.require(:collection).permit(:name, :description, :private)
   end
 end

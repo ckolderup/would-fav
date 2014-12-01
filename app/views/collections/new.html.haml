@@ -1,0 +1,15 @@
+= form_for(@collection, url: create_collection_path) do |f|
+  %fieldset
+    = f.label :name, "Name"
+    = f.text_field :name
+
+  %fieldset
+    = f.label :description, "Description (optional)"
+    = f.text_field :description
+
+  %fieldset
+    = f.label :private, "Private collection"
+    = f.check_box :private, value: false
+
+  %fieldset
+    = f.submit "Submit", class: 'btn btn-primary'
